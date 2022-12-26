@@ -1,6 +1,7 @@
 package dao.web;
 
 import com.google.gson.Gson;
+import exceptions.ClientFailedException;
 
 import java.io.IOException;
 import java.net.URI;

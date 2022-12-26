@@ -1,8 +1,8 @@
 package dao.database.impl;
 
-import dao.ConfigReaderException;
+import exceptions.ConfigReaderException;
 import dao.database.FlightDAO;
-import dao.database.impl.exceptions.MainSQLException;
+import exceptions.MainSQLException;
 import model.City;
 import model.Flight;
 

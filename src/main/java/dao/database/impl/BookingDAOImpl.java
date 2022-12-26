@@ -1,10 +1,10 @@
 package dao.database.impl;
 
-import dao.ConfigReaderException;
+import exceptions.ConfigReaderException;
 import dao.database.BookingDAO;
 import dao.database.FlightDAO;
-import dao.database.impl.exceptions.MainSQLException;
-import dao.database.impl.exceptions.NoSuchFlightException;
+import exceptions.MainSQLException;
+import exceptions.NoSuchFlightException;
 import model.Flight;
 import model.Gender;
 import model.Passenger;

@@ -1,4 +1,4 @@
-package dao.web;
+package exceptions;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

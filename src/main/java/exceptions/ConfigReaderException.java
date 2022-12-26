@@ -1,4 +1,4 @@
-package dao;
+package exceptions;
 
 import java.io.IOException;
 

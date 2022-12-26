@@ -1,6 +1,6 @@
 package dao.web;
 
-import dao.ConfigReaderException;
+import exceptions.ConfigReaderException;
 import dao.web.classes.Currency;
 
 import java.io.FileReader;
