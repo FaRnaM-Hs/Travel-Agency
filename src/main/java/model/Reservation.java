@@ -30,6 +30,10 @@ public class Reservation {
         return numberOfTickets;
     }
 
+    public boolean isRoundTrip() {
+        return !returnFlight.isEmpty();
+    }
+
     @Override
     public String toString() {
         return "Reservation: ["
