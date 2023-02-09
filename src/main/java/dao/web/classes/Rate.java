@@ -21,6 +21,6 @@ public class Rate {
     }
 
     public double getIRR() {
-        return IRR;
+        return IRR * 10;
     }
 }

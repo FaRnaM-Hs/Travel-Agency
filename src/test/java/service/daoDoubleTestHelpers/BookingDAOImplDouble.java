@@ -57,11 +57,6 @@ public class BookingDAOImplDouble implements BookingDAO {
     }
 
     @Override
-    public List<Reservation> getAll() {
-        return reservations;
-    }
-
-    @Override
     public List<Reservation> searchByNationCode(String nationCodeKey) {
         return reservations.stream()
                 .filter(reservation -> reservation.getPassenger().getNationCode().contains(nationCodeKey))

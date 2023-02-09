@@ -6,15 +6,14 @@ import exceptions.ClientFailedException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class Client {
+public class HttpClient {
 
     private final Gson gson;
 
-    public Client() {
+    public HttpClient() {
         this.gson = new Gson();
     }
 
@@ -37,7 +36,7 @@ public class Client {
 
     private HttpResponse<String> response(HttpRequest request) {
         try {
-            return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            return java.net.http.HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException e) {
             throw new ClientFailedException(e);
         } catch (InterruptedException e) {

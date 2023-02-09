@@ -8,6 +8,8 @@ public interface BookingService {
 
     void book(Reservation reservation);
 
+    void cancel(Reservation reservation);
+
     void cancel(String nationCode, String outboundFlightNumber);
 
     void cancel(String nationCode, String outboundFlightNumber, String returnFlightNumber);
@@ -15,8 +17,6 @@ public interface BookingService {
     Reservation get(String nationCode, String outboundFlightNumber);
 
     Reservation get(String nationCode, String outboundFlightNumber, String returnFlightNumber);
-
-    List<Reservation> getAll();
 
     List<Reservation> searchByNationCode(String nationCodeKey);
 

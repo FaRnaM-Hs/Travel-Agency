@@ -1,6 +1,6 @@
 package service;
 
-import exceptions.NoSuchReservationException;
+import exceptions.ReservationNotFoundException;
 import exceptions.NotEnoughSeatsException;
 import exceptions.TimeException;
 import model.Flight;
@@ -11,8 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.daoDoubleTestHelpers.BookingDAOImplDouble;
 import service.daoDoubleTestHelpers.FlightDAOImplDouble;
-import service.impl.BookingServiceImpl;
-import service.impl.FlightServiceImpl;
 
 import java.time.LocalDate;
 
@@ -83,9 +81,9 @@ public class BookingServiceImplShould {
         bookingService.book(oneWayReservation);
         bookingService.book(roundTripReservation);
 
-        assertThrows(NoSuchReservationException.class, () -> bookingService.cancel("1234567890", "333"));
+        assertThrows(ReservationNotFoundException.class, () -> bookingService.cancel("1234567890", "333"));
 
-        assertThrows(NoSuchReservationException.class, () -> bookingService.cancel("1234567890", "222", "333"));
+        assertThrows(ReservationNotFoundException.class, () -> bookingService.cancel("1234567890", "222", "333"));
 
         assertDoesNotThrow(() -> bookingService.cancel("1234567890", "222"));
 
@@ -99,9 +97,9 @@ public class BookingServiceImplShould {
         bookingService.book(oneWayReservation);
         bookingService.book(roundTripReservation);
 
-        assertThrows(NoSuchReservationException.class, () -> bookingService.get("1234567890", "333"));
+        assertThrows(ReservationNotFoundException.class, () -> bookingService.get("1234567890", "333"));
 
-        assertThrows(NoSuchReservationException.class, () -> bookingService.get("1234567890", "222", "333"));
+        assertThrows(ReservationNotFoundException.class, () -> bookingService.get("1234567890", "222", "333"));
 
         assertDoesNotThrow(() -> bookingService.cancel("1234567890", "222"));
 

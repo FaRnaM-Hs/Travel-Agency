@@ -1,13 +1,13 @@
 package service.daoDoubleTestHelpers;
 
-import dao.web.CurrencyWeb;
+import dao.web.CurrencyDAO;
 
 // Based on USD
-public class CurrencyWebImplDouble implements CurrencyWeb {
+public class CurrencyDAOImplDouble implements CurrencyDAO {
 
     @Override
-    public double getUSD() {
-        return 1;
+    public void update() {
+        // ignore
     }
 
     @Override

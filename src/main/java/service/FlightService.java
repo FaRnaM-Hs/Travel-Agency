@@ -14,9 +14,5 @@ public interface FlightService {
 
     Flight get(String flightNumber);
 
-    List<Flight> getAll();
-
     List<Flight> search(City origin, City destination, LocalDate departureDate);
-
-    boolean isExists(String flightNumber);
 }

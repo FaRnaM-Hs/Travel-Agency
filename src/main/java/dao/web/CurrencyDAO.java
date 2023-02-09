@@ -1,8 +1,8 @@
 package dao.web;
 
-public interface CurrencyWeb {
+public interface CurrencyDAO {
 
-    double getUSD();
+    void update();
 
     double getEUR();
 

@@ -1,12 +1,11 @@
-package service.impl;
+package service;
 
 import dao.database.FlightDAO;
-import exceptions.NoSuchFlightException;
+import exceptions.FlightNotFoundException;
 import exceptions.NotEnoughSeatsException;
 import exceptions.TimeException;
 import model.City;
 import model.Flight;
-import service.FlightService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,7 +23,7 @@ public class FlightServiceImpl implements FlightService {
     public void increaseSeatsLeft(String flightNumber, int amount) {
         Flight flight = get(flightNumber);
         checkAmount(amount);
-        checkTime(flight);
+        checkFlightTime(flight);
 
         flightDAO.increaseSeatsLeft(flightNumber, amount);
     }
@@ -33,7 +32,7 @@ public class FlightServiceImpl implements FlightService {
     public void decreaseSeatsLeft(String flightNumber, int amount) {
         Flight flight = get(flightNumber);
         checkAmount(amount);
-        checkTime(flight);
+        checkFlightTime(flight);
         checkSeats(flight, amount);
 
         flightDAO.decreaseSeatsLeft(flightNumber, amount);
@@ -41,12 +40,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight get(String flightNumber) {
-        return flightDAO.get(flightNumber).orElseThrow(() -> new NoSuchFlightException(flightNumber));
-    }
-
-    @Override
-    public List<Flight> getAll() {
-        return flightDAO.getAll();
+        return flightDAO.get(flightNumber).orElseThrow(() -> new FlightNotFoundException(flightNumber));
     }
 
     @Override
@@ -54,17 +48,12 @@ public class FlightServiceImpl implements FlightService {
         return flightDAO.search(origin, destination, departureDate);
     }
 
-    @Override
-    public boolean isExists(String flightNumber) {
-        return flightDAO.isExists(flightNumber);
-    }
-
     private void checkAmount(int amount) {
         if (amount <= 0)
             throw new IllegalArgumentException("Invalid amount.");
     }
 
-    private void checkTime(Flight flight) {
+    private void checkFlightTime(Flight flight) {
         if (LocalDateTime.now().isAfter(flight.getDeparture()))
             throw new TimeException();
     }

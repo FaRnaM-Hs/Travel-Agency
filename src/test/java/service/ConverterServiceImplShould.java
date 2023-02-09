@@ -2,8 +2,7 @@ package service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import service.daoDoubleTestHelpers.CurrencyWebImplDouble;
-import service.impl.ConverterServiceImpl;
+import service.daoDoubleTestHelpers.CurrencyDAOImplDouble;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -13,7 +12,7 @@ public class ConverterServiceImplShould {
 
     @BeforeEach
     void setUp() {
-        converterService = new ConverterServiceImpl(new CurrencyWebImplDouble());
+        converterService = new ConverterServiceImpl(new CurrencyDAOImplDouble());
     }
 
     @Test

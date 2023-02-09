@@ -1,13 +1,11 @@
-package service.impl;
+package service;
 
 import dao.database.BookingDAO;
 import dao.database.FlightDAO;
-import exceptions.NoSuchReservationException;
+import exceptions.ReservationNotFoundException;
 import exceptions.NotEnoughSeatsException;
 import exceptions.TimeException;
 import model.Reservation;
-import service.BookingService;
-import service.FlightService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,16 +22,26 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void book(Reservation reservation) {
-        checkTime(reservation);
-        checkFlightsTime(reservation);
-        checkNumberOfTickets(reservation);
-        checkSeatsLeft(reservation);
-
+        check(reservation);
         decreaseSeatsLeft(reservation);
         if (isExists(reservation)) {
             increaseNumberOfTickets(reservation);
         } else {
             bookingDAO.book(reservation);
+        }
+    }
+
+    @Override
+    public void cancel(Reservation reservation) {
+        String nationCode = reservation.getPassenger().getNationCode();
+        String outboundFlightNumber = reservation.getOutboundFlight().getFlightNumber();
+
+        if (reservation.isRoundTrip()) {
+            String returnFlightNumber = reservation.getReturnFlight().getFlightNumber();
+            cancel(nationCode, outboundFlightNumber, returnFlightNumber);
+        }
+        else {
+            cancel(nationCode, outboundFlightNumber);
         }
     }
 
@@ -59,7 +67,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Reservation get(String nationCode, String outboundFlightNumber) {
         return bookingDAO.get(nationCode, outboundFlightNumber)
-                .orElseThrow(() -> new NoSuchReservationException(
+                .orElseThrow(() -> new ReservationNotFoundException(
                         "NC: " + nationCode + ", OF: " + outboundFlightNumber
                 ));
     }
@@ -67,14 +75,9 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Reservation get(String nationCode, String outboundFlightNumber, String returnFlightNumber) {
         return bookingDAO.get(nationCode, outboundFlightNumber, returnFlightNumber)
-                .orElseThrow(() -> new NoSuchReservationException(
+                .orElseThrow(() -> new ReservationNotFoundException(
                         "NC: " + nationCode + ", OF: " + outboundFlightNumber + ", RF" + returnFlightNumber
                 ));
-    }
-
-    @Override
-    public List<Reservation> getAll() {
-        return bookingDAO.getAll();
     }
 
     @Override
@@ -116,13 +119,15 @@ public class BookingServiceImpl implements BookingService {
     private void increaseNumberOfTickets(Reservation reservation) {
         String nationCode = reservation.getPassenger().getNationCode();
         String outboundNumber = reservation.getOutboundFlight().getFlightNumber();
-        String returnNumber = reservation.getReturnFlight().getFlightNumber();
         int numberOfTickets = reservation.getNumberOfTickets();
 
-        if (reservation.isRoundTrip())
+        if (reservation.isRoundTrip()) {
+            String returnNumber = reservation.getReturnFlight().getFlightNumber();
             increaseNumberOfTickets(nationCode, outboundNumber, returnNumber, numberOfTickets);
-        else
+        }
+        else {
             increaseNumberOfTickets(nationCode, outboundNumber, numberOfTickets);
+        }
     }
 
     private void increaseNumberOfTickets(String nationCode, String outboundFlightNumber, int amount) {
@@ -136,12 +141,20 @@ public class BookingServiceImpl implements BookingService {
 
     private void decreaseSeatsLeft(Reservation reservation) {
         String outboundFlightNumber = reservation.getOutboundFlight().getFlightNumber();
-        String returnFlightNumber = reservation.getReturnFlight().getFlightNumber();
         int numberOfTickets = reservation.getNumberOfTickets();
 
         flightService.decreaseSeatsLeft(outboundFlightNumber, numberOfTickets);
-        if (reservation.isRoundTrip())
+        if (reservation.isRoundTrip()) {
+            String returnFlightNumber = reservation.getReturnFlight().getFlightNumber();
             flightService.decreaseSeatsLeft(returnFlightNumber, numberOfTickets);
+        }
+    }
+
+    private void check(Reservation reservation) {
+        checkTime(reservation);
+        checkFlightsTime(reservation);
+        checkNumberOfTickets(reservation);
+        checkSeatsLeft(reservation);
     }
 
     private void checkTime(Reservation reservation) {
@@ -161,13 +174,9 @@ public class BookingServiceImpl implements BookingService {
     }
 
     private void checkSeatsLeft(Reservation reservation) {
-        checkSeatsLeft(reservation, reservation.getNumberOfTickets());
-    }
-
-    private void checkSeatsLeft(Reservation reservation, int amount) {
-        if (reservation.getOutboundFlight().getSeatsLeft() < amount)
+        if (reservation.getOutboundFlight().getSeatsLeft() < reservation.getNumberOfTickets())
             throw new NotEnoughSeatsException(reservation.getOutboundFlight().getFlightNumber());
-        if (reservation.isRoundTrip() && reservation.getReturnFlight().getSeatsLeft() < amount)
+        if (reservation.isRoundTrip() && reservation.getReturnFlight().getSeatsLeft() < reservation.getNumberOfTickets())
             throw new NotEnoughSeatsException(reservation.getReturnFlight().getFlightNumber());
     }
 }

@@ -37,18 +37,6 @@ public class FlightDAOImplDouble implements FlightDAO {
     }
 
     @Override
-    public List<Flight> getAll() {
-        return flights.stream().toList();
-    }
-
-    @Override
-    public List<Flight> search(City origin, City destination) {
-        return flights.stream()
-                .filter(flight -> flight.getOrigin().equals(origin) && flight.getDestination().equals(destination))
-                .toList();
-    }
-
-    @Override
     public List<Flight> search(City origin, City destination, LocalDate departureDate) {
         return flights.stream()
                 .filter(flight -> flight.getOrigin().equals(origin) && flight.getDestination().equals(destination))
@@ -56,8 +44,4 @@ public class FlightDAOImplDouble implements FlightDAO {
                 .toList();
     }
 
-    @Override
-    public boolean isExists(String flightNumber) {
-        return flights.stream().anyMatch(flight -> flight.getFlightNumber().equals(flightNumber));
-    }
 }

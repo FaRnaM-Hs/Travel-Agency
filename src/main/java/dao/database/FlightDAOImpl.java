@@ -1,20 +1,16 @@
-package dao.database.impl;
+package dao.database;
 
-import exceptions.ConfigReaderException;
-import dao.database.FlightDAO;
+import dao.PropertiesHelper;
 import exceptions.MainSQLException;
 import model.City;
 import model.Flight;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
 public class FlightDAOImpl implements FlightDAO {
 
@@ -24,30 +20,18 @@ public class FlightDAOImpl implements FlightDAO {
             "UPDATE flights SET seats_left = seats_left - ? WHERE number = ?";
     private static final String SELECT_FLIGHT_SQL =
             "SELECT * FROM flights WHERE number = ?";
-    private static final String SELECT_ALL_FLIGHTS_SQL =
-            "SELECT * FROM flights";
-    private static final String SELECT_FLIGHTS_ORIGIN_DESTINATION_SQL =
-            "SELECT * FROM flights WHERE origin = ? AND destination = ?";
     private static final String SELECT_FLIGHTS_ORIGIN_DESTINATION_DATE_SQL =
             "SELECT * FROM flights WHERE origin = ? AND destination = ? AND departure BETWEEN ? AND ? ";
-    private static final String SELECT_EXISTS_FLIGHT_SQL =
-            "SELECT EXISTS(SELECT * FROM flights WHERE number = ?) AS 'exists'";
 
     private final String host;
     private final String user;
     private final String pass;
 
     public FlightDAOImpl() {
-        try {
-            FileReader reader = new FileReader("db-config.properties");
-            Properties properties = new Properties();
-            properties.load(reader);
-            host = properties.getProperty("host");
-            user = properties.getProperty("user");
-            pass = properties.getProperty("pass");
-        } catch (IOException e) {
-            throw new ConfigReaderException(e);
-        }
+        PropertiesHelper propertiesHelper = new PropertiesHelper("db-config.properties");
+        host = propertiesHelper.getProperty("host");
+        user = propertiesHelper.getProperty("user");
+        pass = propertiesHelper.getProperty("pass");
     }
 
     @Override
@@ -91,38 +75,6 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
-    public List<Flight> getAll() {
-        try (Connection con = DriverManager.getConnection(host, user, pass);
-             PreparedStatement select = con.prepareStatement(SELECT_ALL_FLIGHTS_SQL)) {
-            ResultSet resultSet = select.executeQuery();
-            List<Flight> flights = new ArrayList<>();
-            while (resultSet.next()) {
-                flights.add(getFlightFromResultSet(resultSet));
-            }
-            return flights;
-        } catch (SQLException e) {
-            throw new MainSQLException(e);
-        }
-    }
-
-    @Override
-    public List<Flight> search(City origin, City destination) {
-        try (Connection con = DriverManager.getConnection(host, user, pass);
-             PreparedStatement select = con.prepareStatement(SELECT_FLIGHTS_ORIGIN_DESTINATION_SQL)) {
-            select.setString(1, origin.name);
-            select.setString(2, destination.name);
-            ResultSet resultSet = select.executeQuery();
-            List<Flight> flights = new ArrayList<>();
-            while (resultSet.next()) {
-                flights.add(getFlightFromResultSet(resultSet));
-            }
-            return flights;
-        } catch (SQLException e) {
-            throw new MainSQLException(e);
-        }
-    }
-
-    @Override
     public List<Flight> search(City origin, City destination, LocalDate departureDate) {
         try (Connection con = DriverManager.getConnection(host, user, pass);
              PreparedStatement select = con.prepareStatement(SELECT_FLIGHTS_ORIGIN_DESTINATION_DATE_SQL)) {
@@ -136,19 +88,6 @@ public class FlightDAOImpl implements FlightDAO {
                 flights.add(getFlightFromResultSet(resultSet));
             }
             return flights;
-        } catch (SQLException e) {
-            throw new MainSQLException(e);
-        }
-    }
-
-    @Override
-    public boolean isExists(String flightNumber) {
-        try (Connection con = DriverManager.getConnection(host, user, pass);
-             PreparedStatement select = con.prepareStatement(SELECT_EXISTS_FLIGHT_SQL)) {
-            select.setString(1, flightNumber);
-            ResultSet resultSet = select.executeQuery();
-            resultSet.next();
-            return resultSet.getInt("exists") == 1;
         } catch (SQLException e) {
             throw new MainSQLException(e);
         }

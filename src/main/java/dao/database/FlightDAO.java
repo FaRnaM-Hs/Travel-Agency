@@ -15,10 +15,5 @@ public interface FlightDAO {
 
     Optional<Flight> get(String flightNumber);
 
-    List<Flight> getAll();
-
-    List<Flight> search(City origin, City destination);
     List<Flight> search(City origin, City destination, LocalDate departureDate);
-
-    boolean isExists(String flightNumber);
 }

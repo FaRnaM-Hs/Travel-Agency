@@ -21,8 +21,6 @@ public interface BookingDAO {
 
     Optional<Reservation> get(String nationCode, String outboundFlightNumber, String returnFlightNumber);
 
-    List<Reservation> getAll();
-
     List<Reservation> searchByNationCode(String nationCodeKey);
 
     List<Reservation> searchByName(String firstNameKey, String lastNameKey);
