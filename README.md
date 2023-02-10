@@ -12,6 +12,7 @@ The system allows users to easily schedule reservations to manage and organize t
 ### **Tools & Technologies Used**
 
 - Java SE 18
+- Maven 3.8.5
 - MySQL 8.0
 - Google GSON 2.10
 - JUnit 5
