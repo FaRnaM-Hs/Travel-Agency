@@ -16,8 +16,7 @@ public enum City {
     GHESHM("Gheshm"),
     ESFAHAN("Esfahan"),
     GORGAN("Gorgan"),
-    RASHT("Rasht"),
-    EMPTY("Empty");
+    RASHT("Rasht");
 
     public final String name;
 

@@ -16,4 +16,6 @@ public interface FlightDAO {
     Optional<Flight> get(String flightNumber);
 
     List<Flight> search(City origin, City destination, LocalDate departureDate);
+
+    boolean isExists(String flightNumber);
 }

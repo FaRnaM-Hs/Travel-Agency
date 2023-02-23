@@ -22,7 +22,7 @@ import static javax.swing.JOptionPane.*;
 public class PassengerInformation extends javax.swing.JFrame {
 
     private static final String NAME_PATTERN = "^[\\p{L} ']+$";
-    private static final String NATION_CODE_PATTERN = "[0-9]{10}";
+    private static final String NATIONAL_CODE_PATTERN = "[0-9]{10}";
     private static final String PHONE_NUMBER_PATTERN = "09\\d{9}$";
 
     private final BookingService bookingService;
@@ -57,8 +57,8 @@ public class PassengerInformation extends javax.swing.JFrame {
         firstNameTextField = new javax.swing.JTextField();
         lastNameTextField = new javax.swing.JTextField();
         lastNameLabel = new javax.swing.JLabel();
-        nationCodeLabel = new javax.swing.JLabel();
-        nationCodeTextField = new javax.swing.JTextField();
+        nationalCodeLabel = new javax.swing.JLabel();
+        nationalCodeTextField = new javax.swing.JTextField();
         birthdayLabel = new javax.swing.JLabel();
         birthdayChooser = new com.toedter.calendar.JDateChooser();
         genderLabel = new javax.swing.JLabel();
@@ -69,7 +69,7 @@ public class PassengerInformation extends javax.swing.JFrame {
         addressTextField = new javax.swing.JTextField();
         firstNameWarningLabel = new javax.swing.JLabel();
         lastNameWarningLabel = new javax.swing.JLabel();
-        nationCodeWarningLabel = new javax.swing.JLabel();
+        nationalCodeWarningLabel = new javax.swing.JLabel();
         phoneNumberExampleLabel = new javax.swing.JLabel();
         phoneNumberWarningLabel = new javax.swing.JLabel();
 
@@ -112,11 +112,11 @@ public class PassengerInformation extends javax.swing.JFrame {
         lastNameLabel.setText("Last Name");
         lastNameLabel.setFocusable(false);
 
-        nationCodeLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
-        nationCodeLabel.setText("Nation Code");
-        nationCodeLabel.setFocusable(false);
+        nationalCodeLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
+        nationalCodeLabel.setText("National Code");
+        nationalCodeLabel.setFocusable(false);
 
-        nationCodeTextField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nationalCodeTextField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         birthdayLabel.setFont(new java.awt.Font("Tahoma", 1, 17)); // NOI18N
         birthdayLabel.setText("Birthday");
@@ -132,7 +132,7 @@ public class PassengerInformation extends javax.swing.JFrame {
 
         genderSelector.setBackground(Color.WHITE);
         genderSelector.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        genderSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Male", "Female"}));
+        genderSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
         genderSelector.setSelectedIndex(-1);
         genderSelector.setFocusable(false);
 
@@ -157,10 +157,10 @@ public class PassengerInformation extends javax.swing.JFrame {
         lastNameWarningLabel.setText("Last Name must have only letters.");
         lastNameWarningLabel.setFocusable(false);
 
-        nationCodeWarningLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        nationCodeWarningLabel.setForeground(this.getBackground());
-        nationCodeWarningLabel.setText("Nation Code have to be a 10 digits number.");
-        nationCodeWarningLabel.setFocusable(false);
+        nationalCodeWarningLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        nationalCodeWarningLabel.setForeground(this.getBackground());
+        nationalCodeWarningLabel.setText("National Code have to be a 10 digits number.");
+        nationalCodeWarningLabel.setFocusable(false);
 
         phoneNumberExampleLabel.setText("Example: 09123456789");
         phoneNumberExampleLabel.setFocusable(false);
@@ -173,118 +173,118 @@ public class PassengerInformation extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lastNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(lastNameLabel)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(birthdayChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genderSelector, 0, 160, Short.MAX_VALUE)
+                            .addComponent(birthdayLabel)
+                            .addComponent(genderLabel))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(phoneNumberLabel)
+                                .addGap(167, 167, 167))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(lastNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                .addComponent(lastNameLabel)
-                                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                                .addGap(100, 100, 100)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(birthdayChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(genderSelector, 0, 160, Short.MAX_VALUE)
-                                                        .addComponent(birthdayLabel)
-                                                        .addComponent(genderLabel))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(phoneNumberLabel)
-                                                                .addGap(167, 167, 167))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGap(100, 100, 100)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(phoneNumberExampleLabel)
-                                                                        .addComponent(phoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(phoneNumberWarningLabel))
-                                                                .addGap(134, 134, 134))))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(firstNameLabel)
-                                                .addContainerGap())
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(lastNameWarningLabel)
-                                                        .addComponent(firstNameWarningLabel))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nationCodeWarningLabel)
-                                        .addComponent(addressLabel)
-                                        .addComponent(nationCodeLabel)
-                                        .addComponent(nationCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addContainerGap())
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(5, 5, 5))))
+                                    .addComponent(phoneNumberExampleLabel)
+                                    .addComponent(phoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phoneNumberWarningLabel))
+                                .addGap(134, 134, 134))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(firstNameLabel)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lastNameWarningLabel)
+                            .addComponent(firstNameWarningLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nationalCodeWarningLabel)
+                    .addComponent(addressLabel)
+                    .addComponent(nationalCodeLabel)
+                    .addComponent(nationalCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5))))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(titleLabel)
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(firstNameLabel)
-                                        .addComponent(birthdayLabel)
-                                        .addComponent(phoneNumberLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(birthdayChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(phoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(phoneNumberExampleLabel)
-                                        .addComponent(firstNameWarningLabel))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(lastNameLabel)
-                                                        .addComponent(genderLabel)))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(phoneNumberWarningLabel)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(genderSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lastNameWarningLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(nationCodeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nationCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nationCodeWarningLabel)
-                                .addGap(10, 10, 10)
-                                .addComponent(addressLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(5, 5, 5))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(titleLabel)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstNameLabel)
+                    .addComponent(birthdayLabel)
+                    .addComponent(phoneNumberLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(birthdayChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phoneNumberExampleLabel)
+                    .addComponent(firstNameWarningLabel))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lastNameLabel)
+                            .addComponent(genderLabel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(phoneNumberWarningLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(genderSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lastNameWarningLabel)
+                .addGap(10, 10, 10)
+                .addComponent(nationalCodeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nationalCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nationalCodeWarningLabel)
+                .addGap(10, 10, 10)
+                .addComponent(addressLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
         );
 
         pack();
@@ -385,12 +385,12 @@ public class PassengerInformation extends javax.swing.JFrame {
             lastNameWarningLabel.setForeground(this.getBackground());
         }
 
-        if (isNationCodeWrong()) {
-            nationCodeLabel.setForeground(Color.RED);
-            nationCodeWarningLabel.setForeground(Color.RED);
-        } else if (nationCodeLabel.getForeground() == Color.RED) {
-            nationCodeLabel.setForeground(Color.BLACK);
-            nationCodeWarningLabel.setForeground(this.getBackground());
+        if (isNationalCodeWrong()) {
+            nationalCodeLabel.setForeground(Color.RED);
+            nationalCodeWarningLabel.setForeground(Color.RED);
+        } else if (nationalCodeLabel.getForeground() == Color.RED) {
+            nationalCodeLabel.setForeground(Color.BLACK);
+            nationalCodeWarningLabel.setForeground(this.getBackground());
         }
 
         if (isBirthdayWrong()) {
@@ -417,7 +417,7 @@ public class PassengerInformation extends javax.swing.JFrame {
     private boolean isAllFieldsCorrect() {
         return !(isFirstNameWrong()
                 || isLastNameWrong()
-                || isNationCodeWrong()
+                || isNationalCodeWrong()
                 || isBirthdayWrong()
                 || isGenderWrong()
                 || isPhoneNumberWrong());
@@ -431,8 +431,8 @@ public class PassengerInformation extends javax.swing.JFrame {
         return !lastNameTextField.getText().strip().matches(NAME_PATTERN);
     }
 
-    private boolean isNationCodeWrong() {
-        return !nationCodeTextField.getText().strip().matches(NATION_CODE_PATTERN);
+    private boolean isNationalCodeWrong() {
+        return !nationalCodeTextField.getText().strip().matches(NATIONAL_CODE_PATTERN);
     }
 
     private boolean isBirthdayWrong() {
@@ -452,7 +452,7 @@ public class PassengerInformation extends javax.swing.JFrame {
     }
 
     private Passenger getPassengerInfo() {
-        String nationCode = nationCodeTextField.getText().strip();
+        String nationalCode = nationalCodeTextField.getText().strip();
         String firstName = firstNameTextField.getText().strip();
         String lastName = lastNameTextField.getText().strip();
         LocalDate birthday = birthdayChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -460,7 +460,7 @@ public class PassengerInformation extends javax.swing.JFrame {
         String phoneNumber = phoneNumberTextField.getText().strip();
         String address = addressTextField.getText().strip();
 
-        return new Passenger(nationCode, firstName, lastName, gender, birthday, phoneNumber, address);
+        return new Passenger(nationalCode, firstName, lastName, gender, birthday, phoneNumber, address);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -478,9 +478,9 @@ public class PassengerInformation extends javax.swing.JFrame {
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JLabel lastNameWarningLabel;
-    private javax.swing.JLabel nationCodeLabel;
-    private javax.swing.JTextField nationCodeTextField;
-    private javax.swing.JLabel nationCodeWarningLabel;
+    private javax.swing.JLabel nationalCodeLabel;
+    private javax.swing.JTextField nationalCodeTextField;
+    private javax.swing.JLabel nationalCodeWarningLabel;
     private javax.swing.JLabel phoneNumberExampleLabel;
     private javax.swing.JLabel phoneNumberLabel;
     private javax.swing.JTextField phoneNumberTextField;

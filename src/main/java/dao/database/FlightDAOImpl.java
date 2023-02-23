@@ -22,6 +22,8 @@ public class FlightDAOImpl implements FlightDAO {
             "SELECT * FROM flights WHERE number = ?";
     private static final String SELECT_FLIGHTS_ORIGIN_DESTINATION_DATE_SQL =
             "SELECT * FROM flights WHERE origin = ? AND destination = ? AND departure BETWEEN ? AND ? ";
+    private static final String SELECT_EXISTS_FLIGHT_SQL =
+            "SELECT EXISTS(SELECT * FROM flights WHERE number = ?) AS 'exists'";
 
     private final String host;
     private final String user;
@@ -88,6 +90,19 @@ public class FlightDAOImpl implements FlightDAO {
                 flights.add(getFlightFromResultSet(resultSet));
             }
             return flights;
+        } catch (SQLException e) {
+            throw new MainSQLException(e);
+        }
+    }
+
+    @Override
+    public boolean isExists(String flightNumber) {
+        try (Connection con = DriverManager.getConnection(host, user, pass);
+             PreparedStatement select = con.prepareStatement(SELECT_EXISTS_FLIGHT_SQL)) {
+            select.setString(1, flightNumber);
+            ResultSet resultSet = select.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("exists") == 1;
         } catch (SQLException e) {
             throw new MainSQLException(e);
         }

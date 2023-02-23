@@ -10,23 +10,9 @@ public interface BookingService {
 
     void cancel(Reservation reservation);
 
-    void cancel(String nationCode, String outboundFlightNumber);
+    List<Reservation> findByNationalCode(String nationalCodeKey);
 
-    void cancel(String nationCode, String outboundFlightNumber, String returnFlightNumber);
+    List<Reservation> findByName(String firstNameKey, String lastNameKey);
 
-    Reservation get(String nationCode, String outboundFlightNumber);
-
-    Reservation get(String nationCode, String outboundFlightNumber, String returnFlightNumber);
-
-    List<Reservation> searchByNationCode(String nationCodeKey);
-
-    List<Reservation> searchByName(String firstNameKey, String lastNameKey);
-
-    List<Reservation> searchByFlight(String flightNumber);
-
-    boolean isExists(Reservation reservation);
-
-    boolean isExists(String nationCode, String outboundFlightNumber);
-
-    boolean isExists(String nationCode, String outboundFlightNumber, String returnFlightNumber);
+    List<Reservation> findByFlight(String flightNumber);
 }

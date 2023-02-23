@@ -13,7 +13,6 @@ public class CurrencyDAOImpl implements CurrencyDAO {
     public CurrencyDAOImpl() {
         this.uri = new PropertiesHelper("api.properties").getProperty("uri");
         this.httpClient = new HttpClient();
-        this.currency = this.httpClient.get(uri, Currency.class);
     }
 
     @Override

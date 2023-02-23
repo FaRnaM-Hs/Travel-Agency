@@ -3,32 +3,20 @@ package dao.database;
 import model.Reservation;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BookingDAO {
 
     void book(Reservation reservation);
 
-    void cancel(String nationCode, String outboundFlightNumber);
+    void cancel(String nationalCode, String outboundFlightNumber, String returnFlightNumber);
 
-    void cancel(String nationCode, String outboundFlightNumber, String returnFlightNumber);
+    void increaseTicket(String nationalCode, String outboundFlightNumber, String returnFlightNumber, int amount);
 
-    void increaseNumberOfTickets(String nationCode, String outboundFlightNumber, int amount);
+    List<Reservation> findByNationalCode(String nationalCodeKey);
 
-    void increaseNumberOfTickets(String nationCode, String outboundFlightNumber, String returnFlightNumber, int amount);
+    List<Reservation> findByName(String firstNameKey, String lastNameKey);
 
-    Optional<Reservation> get(String nationCode, String outboundFlightNumber);
+    List<Reservation> findByFlight(String flightNumber);
 
-    Optional<Reservation> get(String nationCode, String outboundFlightNumber, String returnFlightNumber);
-
-    List<Reservation> searchByNationCode(String nationCodeKey);
-
-    List<Reservation> searchByName(String firstNameKey, String lastNameKey);
-
-    List<Reservation> searchByFlight(String flightNumber);
-
-    boolean isExists(String nationCode, String outboundFlightNumber);
-
-    boolean isExists(String nationCode, String outboundFlightNumber, String returnFlightNumber);
-
+    boolean isExists(String nationalCode, String outboundFlightNumber, String returnFlightNumber);
 }

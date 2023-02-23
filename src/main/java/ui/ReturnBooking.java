@@ -346,7 +346,7 @@ public class ReturnBooking extends javax.swing.JFrame {
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         redEmptyFields();
         if (isAnyFieldEmpty()) {
-            showMessage("Origin, Destination and Departure Date must be selected", "", WARNING_MESSAGE);
+            showMessage("Arrival Date must be selected", "", WARNING_MESSAGE);
         } else {
             try {
                 flights = flightService.search(getSelectedOrigin(), getSelectedDestination(), getSelectedDeparture());
@@ -358,7 +358,7 @@ public class ReturnBooking extends javax.swing.JFrame {
                     addFlightsToTable();
                 }
             } catch (Exception e) {
-                String message = "Something went wrong! Please try again later\n\nError Message:\n" + e.getMessage();
+                String message = "Something went wrong! Please try again later\n\nError Message:\n   " + e.getMessage();
                 showMessage(message, "Error", ERROR_MESSAGE);
             }
         }

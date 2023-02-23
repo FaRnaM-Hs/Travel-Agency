@@ -41,7 +41,7 @@ public class BookingSearch extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         nameRadioButton = new javax.swing.JRadioButton();
-        nationCodeRadioButton = new javax.swing.JRadioButton();
+        nationalCodeRadioButton = new javax.swing.JRadioButton();
         flightRadioButton = new javax.swing.JRadioButton();
         searchTextField = new javax.swing.JTextField();
         searchLabel = new javax.swing.JLabel();
@@ -55,26 +55,26 @@ public class BookingSearch extends javax.swing.JFrame {
 
         reservationsTable.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         reservationsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
+            new Object [][] {
 
-                },
-                new String[]{
-                        "Name", "Nation Code", "Outbound Flight", "Return Flight", "Number of Tickets"
-                }
+            },
+            new String [] {
+                "Name", "National Code", "Outbound Flight", "Return Flight", "Number of Tickets"
+            }
         ) {
-            Class[] types = new Class[]{
-                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
-            boolean[] canEdit = new boolean[]{
-                    false, false, false, false, false
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
+                return types [columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         reservationsTable.setFocusable(false);
@@ -86,7 +86,6 @@ public class BookingSearch extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reservationsTableMouseClicked(evt);
             }
-
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 reservationsTableMousePressed(evt);
             }
@@ -142,13 +141,13 @@ public class BookingSearch extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup.add(nationCodeRadioButton);
-        nationCodeRadioButton.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        nationCodeRadioButton.setFocusable(false);
-        nationCodeRadioButton.setLabel("Nation Code");
-        nationCodeRadioButton.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup.add(nationalCodeRadioButton);
+        nationalCodeRadioButton.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        nationalCodeRadioButton.setText("National Code");
+        nationalCodeRadioButton.setFocusable(false);
+        nationalCodeRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nationCodeRadioButtonActionPerformed(evt);
+                nationalCodeRadioButtonActionPerformed(evt);
             }
         });
 
@@ -180,75 +179,75 @@ public class BookingSearch extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(14, 14, 14)
-                                                .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(nationCodeRadioButton)
-                                                                        .addComponent(nameRadioButton))
-                                                                .addGap(116, 116, 116)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(searchLabel)
-                                                                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(24, 24, 24)
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(searchTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(searchLabel2)))
-                                                        .addComponent(flightRadioButton))
-                                                .addContainerGap(208, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(5, 5, 5))))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(366, 366, 366)
-                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
+                                    .addComponent(nationalCodeRadioButton)
+                                    .addComponent(nameRadioButton))
+                                .addGap(116, 116, 116)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(reservationsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane2))
-                                .addContainerGap())
+                                    .addComponent(searchLabel)
+                                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(searchTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(searchLabel2)))
+                            .addComponent(flightRadioButton))
+                        .addContainerGap(194, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(366, 366, 366)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(reservationsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(nameRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(searchLabel)
-                                                .addComponent(searchLabel2)))
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(nationCodeRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(5, 5, 5)
-                                                .addComponent(flightRadioButton))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(searchTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addComponent(reservationsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(5, 5, 5))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nameRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchLabel)
+                        .addComponent(searchLabel2)))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nationalCodeRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(flightRadioButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(reservationsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
         );
 
         pack();
@@ -317,12 +316,12 @@ public class BookingSearch extends javax.swing.JFrame {
         searchTextField2.setText("");
     }//GEN-LAST:event_nameRadioButtonActionPerformed
 
-    private void nationCodeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationCodeRadioButtonActionPerformed
-        searchLabel.setText("Nation Code:");
+    private void nationalCodeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalCodeRadioButtonActionPerformed
+        searchLabel.setText("National Code:");
         searchTextField2.setVisible(false);
         searchLabel2.setVisible(false);
         searchTextField.setText("");
-    }//GEN-LAST:event_nationCodeRadioButtonActionPerformed
+    }//GEN-LAST:event_nationalCodeRadioButtonActionPerformed
 
     private void flightRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightRadioButtonActionPerformed
         searchLabel.setText("Flight Number:");
@@ -358,10 +357,10 @@ public class BookingSearch extends javax.swing.JFrame {
         reservations.forEach(reservation ->
                 reservationsTableModel.addRow(new Object[]{
                         reservation.getPassenger().getFirstName() + " " + reservation.getPassenger().getLastName(),
-                        reservation.getPassenger().getNationCode(),
+                        reservation.getPassenger().getNationalCode(),
                         reservation.getOutboundFlight().getFlightNumber(),
-                        reservation.getReturnFlight().getFlightNumber(),
-                        reservation.getNumberOfTickets()
+                        reservation.isRoundTrip() ? reservation.getReturnFlight().getFlightNumber() : "None",
+                        reservation.getTicket()
                 })
         );
     }
@@ -377,11 +376,11 @@ public class BookingSearch extends javax.swing.JFrame {
 
     private List<Reservation> getReservations() {
         if (nameRadioButton.isSelected())
-            return bookingService.searchByName(searchTextField.getText(), searchTextField2.getText());
-        if (nationCodeRadioButton.isSelected())
-            return bookingService.searchByNationCode(searchTextField.getText());
+            return bookingService.findByName(searchTextField.getText(), searchTextField2.getText());
+        if (nationalCodeRadioButton.isSelected())
+            return bookingService.findByNationalCode(searchTextField.getText());
         if (flightRadioButton.isSelected())
-            return bookingService.searchByFlight(searchTextField.getText());
+            return bookingService.findByFlight(searchTextField.getText());
         return new ArrayList<>();
     }
 
@@ -393,7 +392,7 @@ public class BookingSearch extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton nameRadioButton;
-    private javax.swing.JRadioButton nationCodeRadioButton;
+    private javax.swing.JRadioButton nationalCodeRadioButton;
     private javax.swing.JLabel reservationsLabel;
     private javax.swing.JTable reservationsTable;
     private javax.swing.JButton searchButton;

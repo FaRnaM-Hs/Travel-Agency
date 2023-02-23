@@ -27,7 +27,7 @@ public class InfoGenerator {
     }
 
     private String getTicketsInfo(Reservation reservation) {
-        int numberOfTickets = reservation.getNumberOfTickets();
+        int numberOfTickets = reservation.getTicket();
         return String.format("   %d Ticket%s\n\n", numberOfTickets, numberOfTickets > 1 ? "s" : "");
     }
 
@@ -53,7 +53,7 @@ public class InfoGenerator {
                         Passenger:
                            First Name: %s
                            Last Name: %s
-                           Nation Code: %s
+                           National Code: %s
                            Gender: %s
                            Birthday: %s
                            Phone Number: %s
@@ -62,7 +62,7 @@ public class InfoGenerator {
                         """,
                 passenger.getFirstName(),
                 passenger.getLastName(),
-                passenger.getNationCode(),
+                passenger.getNationalCode(),
                 passenger.getGender().name,
                 passenger.getBirthday().toString(),
                 passenger.getPhoneNumber(),
