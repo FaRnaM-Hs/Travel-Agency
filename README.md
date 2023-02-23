@@ -17,7 +17,7 @@ The system allows users to easily schedule reservations to manage and organize t
 - Google GSON 2.10
 - JUnit 5
 - Currency exchange rates API from [CurrencyFreaks](https://currencyfreaks.com/)
-- NetBeans IDE for UI design
+- NetBeans IDE 13 for UI design
 
 
 ### **How to run**
