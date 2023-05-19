@@ -26,4 +26,4 @@ The system allows users to easily schedule reservations to manage and organize t
 3. Import the project into your preferred Java IDE.
 4. Run the command `mvn clean install` in the project directory.
 5. Start the program by running the `Application` class in the application package.
-6. Flights are available from 2023/03/01 to 2023/03/10.
+6. Flights are available from 2023/09/01 to 2023/09/10.
